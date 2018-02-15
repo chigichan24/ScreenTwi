@@ -15,15 +15,17 @@ public class Gui extends JFrame {
     private void initJFrame() {
 
         Rectangle window = getWindowSize();
+        this.setTitle("TweetScreen");
         this.setSize(window.width, window.height);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setUndecorated(true);
         this.setAlwaysOnTop(true);
 
         Container container = this.getContentPane();
-        container.add(new TweetPanel());
+        container.add(new TweetPanel("chigichan24", "これはテストツイートです"), BorderLayout.NORTH);
+        container.add(new TweetPanel("chigichan24", "ほげふがだぞ〜〜"), BorderLayout.NORTH);
 
-        this.setBackground(new Color(0, 0, 0, 0));
+        this.getContentPane().setBackground(new Color(0, 0, 255));
         this.setVisible(true);
 
     }

@@ -34,9 +34,10 @@ public class Animate {
                 }
 
                 Rectangle now_state = calcProgress(from, to, progress);
-
+                panel.setBounds(now_state);
             }
         });
+        timer.start();
     }
 
     private Rectangle calcProgress(Rectangle from, Rectangle to, double progress) {
