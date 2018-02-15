@@ -1,13 +1,26 @@
+import twitter4j.StallWarning;
+import twitter4j.Status;
+import twitter4j.StatusDeletionNotice;
+import twitter4j.StatusListener;
+
 import javax.swing.*;
 import java.awt.*;
 
 /**
  * Created by chigichan24 on 2018/02/14.
  */
-public class Gui extends JFrame {
+public class Gui extends JFrame implements StatusListener {
+
+    private TwitterStream twitter_stream;
 
     Gui() {
         super();
+        String[] tags = {"kosen12s"};
+        twitter_stream = new TwitterStream();
+        if (twitter_stream.stream != null) {
+            twitter_stream.stream.addListener(this);
+            twitter_stream.stream.filter(tags);
+        }
         initJFrame();
 
     }
@@ -21,11 +34,7 @@ public class Gui extends JFrame {
         this.setUndecorated(true);
         this.setAlwaysOnTop(true);
 
-        Container container = this.getContentPane();
-        container.add(new TweetPanel("chigichan24", "これはテストツイートです"), BorderLayout.NORTH);
-        container.add(new TweetPanel("chigichan24", "ほげふがだぞ〜〜"), BorderLayout.NORTH);
-
-        this.getContentPane().setBackground(new Color(0, 0, 255));
+        this.setBackground(new Color(0, 0, 0, 0));
         this.setVisible(true);
 
     }
@@ -39,4 +48,41 @@ public class Gui extends JFrame {
     }
 
 
+    @Override
+    public void onStatus(Status status) {
+        if (!status.getText().startsWith("RT")) {
+            this.setVisible(false);
+
+            Container container = this.getContentPane();
+            container.removeAll();
+            container.add(new TweetPanel(status.getUser().getName(), status.getText()), BorderLayout.SOUTH);
+
+            this.setVisible(true);
+        }
+    }
+
+    @Override
+    public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {
+
+    }
+
+    @Override
+    public void onTrackLimitationNotice(int i) {
+
+    }
+
+    @Override
+    public void onScrubGeo(long l, long l1) {
+
+    }
+
+    @Override
+    public void onStallWarning(StallWarning stallWarning) {
+
+    }
+
+    @Override
+    public void onException(Exception e) {
+
+    }
 }

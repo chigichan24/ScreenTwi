@@ -6,7 +6,6 @@ class Main {
         @JvmStatic
         fun main(args: Array<String>) {
             val gui = Gui()
-            val stream = TwitterStream(arrayOf("kosen12s"))
         }
     }
 }

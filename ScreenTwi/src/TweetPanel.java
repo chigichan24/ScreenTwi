@@ -7,8 +7,7 @@ import java.awt.*;
 public class TweetPanel extends JPanel {
     TweetPanel(String user_name, String tweet) {
         super();
-        this.setPreferredSize(new Dimension(100,30));
-        this.setBackground(new Color(0, 255, 0));
+        this.setPreferredSize(new Dimension(100, 30));
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(createLabel(user_name, tweet));
         System.out.println(this.getPreferredSize());
@@ -22,7 +21,7 @@ public class TweetPanel extends JPanel {
         JLabel label = new JLabel();
         label.setText(constructViewText(user_name, tweet));
         label.setFont(new Font("Arial", Font.BOLD, 20));
-        label.setForeground(new Color(255, 255, 255));
+        label.setForeground(new Color(0, 0, 255));
         return label;
     }
 
