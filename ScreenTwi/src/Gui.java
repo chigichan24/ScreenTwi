@@ -25,9 +25,7 @@ public class Gui extends JFrame {
         this.setAlwaysOnTop(true);
 
         Container container = this.getContentPane();
-        JLabel lbl = new JLabel();
-        lbl.setText("hoge");
-        container.add(lbl);
+        container.add(new FieldPanel());
 
         this.setBackground(new Color(0, 0, 0, 0));
         this.setVisible(true);
@@ -48,7 +46,8 @@ public class Gui extends JFrame {
             super();
             this.setBackground(new Color(0, 0, 0, 0));
             JLabel label = new JLabel();
-            label.setText("hogehoge");
+            label.setText("これはテストです．");
+            label.setFont(new Font("Arial", Font.BOLD, 20));
             this.add(label);
             this.addMouseListener(this);
         }
